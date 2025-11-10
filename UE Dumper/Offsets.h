@@ -111,26 +111,97 @@ namespace Offsets {
     
     */
 
-    void Example1 () {
-        Memory.GameName = "GameName";
-        Memory.TargetProcess = "GameName-Win64-Shipping.exe";
+    void ReadyOrNot() {
+        Memory.GameName = "ReadyOrNot";
+        Memory.TargetProcess = "ReadyOrNotSteam-Win64-Shipping.exe";
 
         isUE423 = true;
 
-        GWorld = 0x1234567;
-        GNames = 0x1234567;
-        GUObjectArray = 0x1234567;
+        GWorld = 0x90F4AD8;
+        GNames = 0x8EE1B80;
+        GUObjectArray = 0x8F87F20;
     }
 
-    void Example2 () {
-        Memory.GameName = "GameName";
-        Memory.TargetProcess = "GameName.exe";
+    void Bloodlines2() {
+        Memory.GameName = "Bloodlines2";
+        Memory.TargetProcess = "Bloodlines2-Win64-Shipping.exe";
 
         isUE423 = true;
 
-        GWorld = 0x1234567;
-        GNames = 0x1234567;
-        GUObjectArray = 0x1234567;
+        GWorld = 0x805F138;
+        GNames = 0x7E4BDC0;
+        GUObjectArray = 0x7EF21A0;
+    }
+
+    void DarkHours() {
+        Memory.GameName = "DarkHours";
+        Memory.TargetProcess = "darkhours-Win64-Shipping.exe";
+
+        isUE423 = true;
+
+        GWorld = 0x8AD7648;
+        GNames = 0x889C5C0;
+        GUObjectArray = 0x8953990;
+    }
+
+    void BlackStigma() {
+        Memory.GameName = "BlackStigma";
+        Memory.TargetProcess = "StigmaClient-Win64-Shipping.exe";
+
+        isUE423 = true;
+
+        GWorld = 0x7A98F98;
+        GNames = 0x7884A40;
+        GUObjectArray = 0x792AE20;
+    }
+
+    void DarkestDays() {
+        Memory.GameName = "DarkestDays";
+        Memory.TargetProcess = "ProjectNow-Win64-Shipping.exe";
+
+        isUE423 = true;
+
+        GWorld = 0x69EDF60;
+        GNames = 0x686AF40;
+        GUObjectArray = 0x68A7D90;
+
+        FFieldToNext = FFieldToClass + 0x18;
+        FFieldToName = FFieldToNext + PointerSize;
+
+        UPropertyToElementSize = 0x3C;
+        UPropertyToPropertyFlags = UPropertyToElementSize + 0x4;
+        UPropertyToOffsetInternal = 0x4C;
+
+        UBoolPropertyToFieldSize = 0x78;
+        UBoolPropertyToByteOffset = UBoolPropertyToFieldSize + 0x1;
+        UBoolPropertyToByteMask = UBoolPropertyToByteOffset + 0x1;
+        UBoolPropertyToFieldMask = UBoolPropertyToByteMask + 0x1;
+
+        UObjectPropertyToPropertyClass = UBoolPropertyToFieldSize;
+
+        UMapPropertyToKeyProp = UBoolPropertyToFieldSize;
+        UMapPropertyToValueProp = UMapPropertyToKeyProp + PointerSize;
+
+        USetPropertyToElementProp = UBoolPropertyToFieldSize;
+
+        UStructPropertyToStruct = UBoolPropertyToFieldSize;
+
+        UArrayPropertyToInnerProperty = UBoolPropertyToFieldSize;
+
+        UClassPropertyToMetaClass = UBoolPropertyToFieldSize;
+
+        UInterfacePropertyToUInterface = UBoolPropertyToFieldSize;
+    }
+
+    void Mir4S() {
+        Memory.GameName = "Mir4S";
+        Memory.TargetProcess = "Mir4S.exe";
+
+        isUE423 = true;
+
+        GWorld = 0x8289208;
+        GNames = 0x81017C0;
+        GUObjectArray = 0x813DE50;
 
         FFieldToNext = FFieldToClass + 0x18;
         FFieldToName = FFieldToNext + PointerSize;
