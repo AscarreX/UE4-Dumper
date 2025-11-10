@@ -82,6 +82,8 @@ int main() {
 		}
 	}
 
+	std::cout << "[*] Create directory in: " << baseDir << std::endl;
+
 	std::cout << "\n=== Dumper Menu ===" << std::endl;
 	std::cout << "1. Dump String - F1" << std::endl;
 	std::cout << "2. Objects Dump - F2" << std::endl;
