@@ -206,7 +206,7 @@ namespace Offsets {
         FFieldToNext = FFieldToClass + 0x18;
         FFieldToName = FFieldToNext + PointerSize;
 
-        UPropertyToElementSize = 0x3C;
+        UPropertyToElementSize = 0x3C; 
         UPropertyToPropertyFlags = UPropertyToElementSize + 0x4;
         UPropertyToOffsetInternal = 0x4C;
 
