@@ -1,0 +1,13 @@
+.vs/
+x64/
+*.obj
+*.pdb
+*.user
+*.exe
+*.log
+*.sdf
+*.opensdf
+*.db
+*.idb
+*.ipch
+*.cache
