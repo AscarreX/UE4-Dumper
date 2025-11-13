@@ -60,7 +60,7 @@ This project was developed with Microsoft Visual Studio Insiders. The steps belo
 
 ## AIDE / Mobile Notes
 - This Visual Studio project is **not** directly compatible with AIDE or Android Studio.
-- A Android-oriented dumper is maintained separately: `https://github.com/AscarreX/UE4-Mobile-Dumper`.
+- A Android-oriented dumper is maintained separately: [UE4 Dumper](https://github.com/AscarreX/UE4-Mobile-Dumper).
 
 ---
 
