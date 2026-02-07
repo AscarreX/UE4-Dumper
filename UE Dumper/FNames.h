@@ -2,6 +2,30 @@
 
 #include "Memory.h"
 
+struct FString {
+    uintptr_t Data;
+    INT32 Count;
+
+    const char* c_str() {
+        char* str = new char[Count];
+        for (int i = 0; i < Count; i++) {
+            char data = Read<char>(Data + (2 * i));
+            str[i] = isascii(data) ? data : '?';
+        }
+        return (const char*)str;
+    }
+
+    std::string toString() const {
+        std::string str;
+        str.reserve(Count);
+        for (int i = 0; i < Count; i++) {
+            char data = Read<char>(Data + (2 * i));
+            str += isascii(data) ? data : '?';
+        }
+        return str;
+    }
+};
+
 struct WideStr {
     static bool is_surrogate(uint16_t uc) {
         return (uc - 0xd800u) < 2048u;
