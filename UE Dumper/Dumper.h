@@ -177,30 +177,6 @@ void DumpActors(std::string out) {
     std::cout << "[*] Dumped Actors from World...\n" << std::endl;
 }
 
-struct FString {
-    uintptr_t Data;
-    INT32 Count;
-
-    const char* c_str() {
-        char* str = new char[Count];
-        for (int i = 0; i < Count; i++) {
-            char data = Read<char>(Data + (2 * i));
-            str[i] = isascii(data) ? data : '?';
-        }
-        return (const char*)str;
-    }
-
-    std::string toString() const {
-        std::string str;
-        str.reserve(Count);
-        for (int i = 0; i < Count; i++) {
-            char data = Read<char>(Data + (2 * i));
-            str += isascii(data) ? data : '?';
-        }
-        return str;
-    }
-};
-
 void BonesDump(std::string out) {
     int count = 0;
     std::cout << "\n[*] Dumping Bones..." << std::endl;
