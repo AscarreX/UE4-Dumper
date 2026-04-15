@@ -50,7 +50,7 @@ int main() {
 	std::cout << "[+] Unreal Engine window detected" << std::endl;
 
 	// Proceed with hardcoded offsets
-	Offsets::Example1(); // Load only required offsets in these functions
+	Offsets::HogwartsLegacy(); // Load only required offsets in these functions
 
 	// Basic validation
 	Memory.ProcessId = GetProcessID();

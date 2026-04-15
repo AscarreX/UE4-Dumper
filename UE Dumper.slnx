@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="UE Dumper/UE Dumper.vcxproj" />
+  <Project Path="UE Dumper/UE Dumper.vcxproj" Id="4c94345a-9f74-42b8-bd96-bb00dd71e917" />
 </Solution>

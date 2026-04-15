@@ -188,56 +188,36 @@ void BonesDump(std::string out) {
             return;
         }
 
-        uintptr_t PersistentLevel = Read<uintptr_t>(GWorld + Offsets::UWorldToPersistentLevel);
-        uintptr_t AActors = Read<uintptr_t>(PersistentLevel + Offsets::ULevelToAActors);
-        int AActorsCount = Read<int>(PersistentLevel + Offsets::ULevelToAActorsCount);
-
-        uintptr_t OwningGameInstance = Read<uintptr_t>(GWorld + 0x1b8);
-        uintptr_t LocalPlayers = Read<uintptr_t>(OwningGameInstance + 0x38);
+        uintptr_t OwningGameInstance = Read<uintptr_t>(GWorld + 0x330); // GameInstance* OwningGameInstance; - Class: World.Object
+        uintptr_t LocalPlayers = Read<uintptr_t>(OwningGameInstance + 0x38);// LocalPlayer* [] LocalPlayers; - Class: GameInstance.Object
         uintptr_t LocalPlayer = Read<uintptr_t>(LocalPlayers + 0);
-        uintptr_t PlayerController = Read<uintptr_t>(LocalPlayer + 0x30);
-        uintptr_t AcknowledgedPawn = Read<uintptr_t>(PlayerController + 0x340);
+        uintptr_t PlayerController = Read<uintptr_t>(LocalPlayer + 0x30); // PlayerController* PlayerController; - Class: Player.Object
+        uintptr_t AcknowledgedPawn = Read<uintptr_t>(PlayerController + 0x2c8); // Pawn* AcknowledgedPawn; - Class: PlayerController.Controller.Actor.Object
 
-        for (int i = 0; i < AActorsCount; i++) {
-            //uintptr_t Base = Read<uintptr_t>(AActors + (i * Offsets::PointerSize));
+        uintptr_t Mesh = Read<uintptr_t>(AcknowledgedPawn + 0x2a8); // SkeletalMeshComponent* Mesh; - Class: Character.Pawn.Actor.Object
 
-            uintptr_t Mesh = Read<uintptr_t>(AcknowledgedPawn + 0x320); //SkeletalMeshComponent* Mesh;//[Offset: 0x320, Size: 4]
+        uintptr_t SkeletalMesh = Read<uintptr_t>(Mesh + 0x4b0); // SkeletalMesh* SkeletalMesh; - Class: SkinnedMeshComponent.MeshComponent.PrimitiveComponent.SceneComponent.ActorComponent.Object
 
-            uintptr_t SkeletalMesh = Read<uintptr_t>(Mesh + 0x5b0); // SkeletalMesh* SkeletalMesh;//[Offset: 0x5a4, Size: 4]
-            
-            uintptr_t SkeletalMeshs = Read<uintptr_t>(Mesh + 0x5b8); // SkeletalMesh* SkeletalMesh;//[Offset: 0x5a4, Size: 4]
+        uintptr_t Skeleton = Read<uintptr_t>(SkeletalMesh + 0x88); // Skeleton* Skeleton; - Class: SkeletalMesh.StreamableRenderAsset.Object
 
-            int BoneNum = Read<int>(SkeletalMesh + 0x328) + 0x20;
-            int BoneNums = Read<int>(SkeletalMeshs + 0x328) + 0x28;
+        uintptr_t Sockets = Read<uintptr_t>(Skeleton + 0x190); // SkeletalMeshSocket*[] Sockets; - Class: Skeleton.Object
+        
+        int32_t SocketCount = Read<int32_t>(Skeleton + 0x198); // As Sockets is a TArray it has the count 8 byes from the data so (Sockets + 0x8)
 
-            for (int i = 0; i < BoneNums; i++) {
-                int B = Read<int>(BoneNum + i * 0xC);
+        Dump << SocketCount << " bones found in total" << "\n\n";
 
-                std::string G = GetNameFromFName(B);
+        for (int x = 0; x < SocketCount; x++) {
+            uintptr_t Socket = Read<uintptr_t>(Sockets + (x * Offsets::PointerSize));
 
-                Dump << "[" << i << "]: Bone='" << G << "'\n";
+            uintptr_t SocketNameIndex = Read<uintptr_t>(Socket + 0x28); // FName SocketName; - Class: SkeletalMeshSocket.Object
+            std::string SocketName = GetNameFromFName(SocketNameIndex);
+
+            uintptr_t BoneNameIndex = Read<uintptr_t>(Socket + 0x30);// FName BoneName; - Class: SkeletalMeshSocket.Object
+            std::string BoneName = GetNameFromFName(BoneNameIndex);
+
+            if (!BoneName.empty() && BoneName != "None") {
+                Dump << std::left << "[ID: " << x << "] " << std::setw(3) << "| Bone: " << std::setw(35) << BoneName << "| Socket: " << SocketName << "\n";
             }
-
-            /*uintptr_t Skeleton = Read<uintptr_t>(SkeletalMesh + 0xF0); // Skeleton* Skeleton;
-
-            uintptr_t Sockets = Read<uintptr_t>(Skeleton + 0x190); // SkeletalMeshSocket*[] Sockets;
-
-            for (int x = 0; x < 128; x++) {
-                uintptr_t Socket = Read<uintptr_t>(Sockets + (x * sizeof(uintptr_t)));
-
-                // Read bone name directly from socket (offset 0x30)
-                //int32_t BoneNameIndex = Read<int32_t>(Socket + 0x30);
-                // std::string BoneName = GetNameFromFName(BoneNameIndex);
-                std::string BoneName = ReadStringNew(Socket + 0x30);
-
-                // Read socket name (offset 0x28)
-                int32_t SocketNameIndex = Read<int32_t>(Socket + 0x28);
-                std::string SocketName = GetNameFromFName(SocketNameIndex);
-
-                if (BoneName != "") {
-                    Dump << "[" << x << "]: Bone='" << BoneName.c_str() << "' Socket='" << SocketName << "'\n";
-                }
-            }*/
         }
         Dump.close();
     }

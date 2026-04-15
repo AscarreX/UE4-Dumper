@@ -144,15 +144,140 @@ namespace Offsets {
         GUObjectArray = 0x8953990;
     }
 
+    void HarshDoorstop() {
+        Memory.GameName = "HarshDoorstop";
+        Memory.TargetProcess = "HarshDoorstop-Win64-Shipping.exe";
+
+        isUE423 = true;
+
+        GWorld = 0x43BC978;
+        GNames = 0x4261C40;
+        GUObjectArray = 0x427A678;
+
+        FFieldToNext = FFieldToClass + 0x18;
+        FFieldToName = FFieldToNext + PointerSize;
+
+        UPropertyToElementSize = 0x3C;
+        UPropertyToPropertyFlags = UPropertyToElementSize + 0x4;
+        UPropertyToOffsetInternal = 0x4C;
+
+        UBoolPropertyToFieldSize = 0x78;
+        UBoolPropertyToByteOffset = UBoolPropertyToFieldSize + 0x1;
+        UBoolPropertyToByteMask = UBoolPropertyToByteOffset + 0x1;
+        UBoolPropertyToFieldMask = UBoolPropertyToByteMask + 0x1;
+
+        UObjectPropertyToPropertyClass = UBoolPropertyToFieldSize;
+
+        UMapPropertyToKeyProp = UBoolPropertyToFieldSize;
+        UMapPropertyToValueProp = UMapPropertyToKeyProp + PointerSize;
+
+        USetPropertyToElementProp = UBoolPropertyToFieldSize;
+
+        UStructPropertyToStruct = UBoolPropertyToFieldSize;
+
+        UArrayPropertyToInnerProperty = UBoolPropertyToFieldSize;
+
+        UClassPropertyToMetaClass = UBoolPropertyToFieldSize;
+
+        UInterfacePropertyToUInterface = UBoolPropertyToFieldSize;
+    }
+
     void BlackStigma() {
         Memory.GameName = "BlackStigma";
         Memory.TargetProcess = "StigmaClient-Win64-Shipping.exe";
 
         isUE423 = true;
 
-        GWorld = 0x7A98F98;
-        GNames = 0x7884A40;
-        GUObjectArray = 0x792AE20;
+        GWorld = 0x7C1FF28;
+        GNames = 0x7A0CC40;
+        GUObjectArray = 0x7AB3020;
+    }
+
+    void HogwartsLegacy() {
+        Memory.GameName = "HogwartsLegacy";
+        Memory.TargetProcess = "HogwartsLegacy.exe";
+
+        isUE423 = true;
+
+        GWorld = 0x99B5238;
+        GNames = 0x97C2680;
+        GUObjectArray = 0x97FEBD0;
+
+        FFieldToNext = FFieldToClass + 0x18;
+        FFieldToName = FFieldToNext + PointerSize;
+
+        UPropertyToElementSize = 0x3C;
+        UPropertyToPropertyFlags = UPropertyToElementSize + 0x4;
+        UPropertyToOffsetInternal = 0x4C;
+
+        UBoolPropertyToFieldSize = 0x78;
+        UBoolPropertyToByteOffset = UBoolPropertyToFieldSize + 0x1;
+        UBoolPropertyToByteMask = UBoolPropertyToByteOffset + 0x1;
+        UBoolPropertyToFieldMask = UBoolPropertyToByteMask + 0x1;
+
+        UObjectPropertyToPropertyClass = UBoolPropertyToFieldSize;
+
+        UMapPropertyToKeyProp = UBoolPropertyToFieldSize;
+        UMapPropertyToValueProp = UMapPropertyToKeyProp + PointerSize;
+
+        USetPropertyToElementProp = UBoolPropertyToFieldSize;
+
+        UStructPropertyToStruct = UBoolPropertyToFieldSize;
+
+        UArrayPropertyToInnerProperty = UBoolPropertyToFieldSize;
+
+        UClassPropertyToMetaClass = UBoolPropertyToFieldSize;
+
+        UInterfacePropertyToUInterface = UBoolPropertyToFieldSize;
+    }
+
+    void RogueCompany() {
+        Memory.GameName = "RogueCompany";
+        Memory.TargetProcess = "RogueCompany.exe";
+
+        isUE423 = true;
+
+        GWorld = 0x72597A8;
+        GNames = 0x70EA640;
+        GUObjectArray = 0x71168A8;
+
+        FFieldToNext = FFieldToClass + 0x18;
+        FFieldToName = FFieldToNext + PointerSize;
+
+        UPropertyToElementSize = 0x3C;
+        UPropertyToPropertyFlags = UPropertyToElementSize + 0x4;
+        UPropertyToOffsetInternal = 0x4C;
+
+        UBoolPropertyToFieldSize = 0x78;
+        UBoolPropertyToByteOffset = UBoolPropertyToFieldSize + 0x1;
+        UBoolPropertyToByteMask = UBoolPropertyToByteOffset + 0x1;
+        UBoolPropertyToFieldMask = UBoolPropertyToByteMask + 0x1;
+
+        UObjectPropertyToPropertyClass = UBoolPropertyToFieldSize;
+
+        UMapPropertyToKeyProp = UBoolPropertyToFieldSize;
+        UMapPropertyToValueProp = UMapPropertyToKeyProp + PointerSize;
+
+        USetPropertyToElementProp = UBoolPropertyToFieldSize;
+
+        UStructPropertyToStruct = UBoolPropertyToFieldSize;
+
+        UArrayPropertyToInnerProperty = UBoolPropertyToFieldSize;
+
+        UClassPropertyToMetaClass = UBoolPropertyToFieldSize;
+
+        UInterfacePropertyToUInterface = UBoolPropertyToFieldSize;
+    }
+
+    void SevenDeadlySins() {
+        Memory.GameName = "Seven Deadly Sins";
+        Memory.TargetProcess = "SevenDeadlySins_Origin-Win64-Shipping.exe";
+
+        isUE423 = true;
+
+        GWorld = 0xBBF7848;
+        GNames = 0xB9958C0;
+        GUObjectArray = 0xBA79070;
     }
 
     void DarkestDays() {
@@ -161,9 +286,9 @@ namespace Offsets {
 
         isUE423 = true;
 
-        GWorld = 0x69EDF60;
-        GNames = 0x686AF40;
-        GUObjectArray = 0x68A7D90;
+        GWorld = 0x66B3B20;
+        GNames = 0x6530B00;
+        GUObjectArray = 0x656D950;
 
         FFieldToNext = FFieldToClass + 0x18;
         FFieldToName = FFieldToNext + PointerSize;
